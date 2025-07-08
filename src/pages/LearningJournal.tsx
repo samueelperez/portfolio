@@ -9,18 +9,12 @@ import {
   BookOpen, 
   TrendingUp, 
   Target,
-  Award,
   Clock,
-  Users,
-  Zap,
-  Star,
   Brain,
-  Bot,
   Database,
   Lightbulb,
   Plus,
   Search,
-  Filter,
   Grid,
   List,
   Eye,
@@ -38,12 +32,7 @@ import {
   Book,
   Library,
   Tag,
-  Route,
-  GraduationCap,
-  Play,
-  Pause,
   CheckCircle,
-  BarChart3,
   Loader2,
   ArrowRight,
   Trophy,
@@ -54,21 +43,14 @@ import {
 import { gsap } from 'gsap';
 import { 
   getConcepts, 
-  addConcept, 
   deleteConcept,
   getLearningPaths,
-  getUserProfile,
-  createUserProfile,
-  updateUserProfile,
   migrateExistingData
 } from '../lib/database';
 import { supabase } from '../lib/supabase';
-import { CybersecurityKnowledge, LearningPath, UserProfile } from '../lib/supabase';
+import { CybersecurityKnowledge, UserProfile } from '../lib/supabase';
 import { 
-  generateLearningPath, 
-  analyzeKnowledgeGaps, 
   suggestNextConcept,
-  explainConcept,
   generateTaskExplanation,
   generateHelpChatResponse
 } from '../lib/openai';
@@ -108,7 +90,7 @@ export default function CybersecurityLibrary() {
     id: 'default-user',
     level: 'Beginner',
     interests: [],
-    completedConcepts: [],
+    completed_concepts: [],
     learningStyle: 'mixed',
     timeAvailable: 'high',
     goals: [

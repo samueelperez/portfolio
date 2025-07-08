@@ -19,7 +19,6 @@ import {
   Globe,
   Zap,
   Brain,
-  Lightbulb,
   Target,
   CheckCircle,
   Clock
@@ -52,7 +51,7 @@ interface KnowledgeBaseProps {
   onDeleteEntry: (id: string) => void;
 }
 
-export function KnowledgeBase({ entries, onAddEntry, onUpdateEntry, onDeleteEntry }: KnowledgeBaseProps) {
+export function KnowledgeBase({ entries, onAddEntry }: KnowledgeBaseProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');

@@ -5,11 +5,6 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { 
-  Shield, 
-  Globe, 
-  Lock, 
-  Bug, 
-  Target,
   CheckCircle,
   Play,
   BookOpen
