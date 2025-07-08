@@ -228,8 +228,8 @@ export default function CybersecurityLibrary() {
       setKnowledgeBase(concepts);
       
       // Cargar rutas de aprendizaje
-      const paths = await getLearningPaths();
-      setLearningPaths(paths);
+      // const paths = await getLearningPaths();
+      // setLearningPaths(paths);
       
       // Por ahora, usar perfil local en lugar de Supabase para evitar errores
       updateProfileFromConcepts();

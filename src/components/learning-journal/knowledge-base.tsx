@@ -1,27 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Search, 
   Plus, 
-  BookOpen, 
-  Tag, 
-  Link, 
-  FileText,
-  Shield,
-  Bug,
-  Lock,
+  Brain,
   Network,
   Globe,
+  Lock,
+  Bug,
+  Shield,
   Zap,
-  Brain,
-  Target,
-  CheckCircle,
-  Clock
+  Target
 } from 'lucide-react';
 import { gsap } from 'gsap';
 
