@@ -12,22 +12,17 @@ import {
   Tag, 
   Link, 
   FileText,
-  Code,
   Shield,
   Bug,
   Lock,
   Network,
-  Database,
   Globe,
   Zap,
   Brain,
   Lightbulb,
   Target,
   CheckCircle,
-  Clock,
-  Star,
-  Play,
-  Filter
+  Clock
 } from 'lucide-react';
 import { gsap } from 'gsap';
 

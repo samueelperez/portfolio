@@ -9,8 +9,6 @@ import {
   Globe, 
   Lock, 
   Bug, 
-  Search, 
-  Code, 
   Target,
   CheckCircle,
   Play,

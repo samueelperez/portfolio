@@ -11,10 +11,7 @@ import {
   BookOpen, 
   Search,
   MessageSquare,
-  Zap,
   Target,
-  Clock,
-  Star,
   ArrowRight,
   Copy,
   RefreshCw

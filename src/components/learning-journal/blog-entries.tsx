@@ -8,7 +8,6 @@ import {
   BookOpen, 
   Clock, 
   Tag, 
-  ExternalLink, 
   Heart, 
   MessageCircle,
   Share2

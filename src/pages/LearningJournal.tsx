@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,10 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { 
-  ArrowLeft, 
   BookOpen, 
   TrendingUp, 
-  Calendar, 
   Target,
   Award,
   Clock,
@@ -40,7 +37,6 @@ import {
   FileText,
   Book,
   Library,
-  ChevronRight,
   Tag,
   Route,
   GraduationCap,
@@ -59,12 +55,8 @@ import { gsap } from 'gsap';
 import { 
   getConcepts, 
   addConcept, 
-  updateConcept, 
   deleteConcept,
   getLearningPaths,
-  addLearningPath,
-  updateLearningPath,
-  deleteLearningPath,
   getUserProfile,
   createUserProfile,
   updateUserProfile,
@@ -81,62 +73,6 @@ import {
   generateHelpChatResponse
 } from '../lib/openai';
 
-interface CybersecurityKnowledge {
-  id: string;
-  title: string;
-  content: string;
-  summary: string;
-  category: string;
-  subcategory: string;
-  tags: string[];
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
-  dateAdded: string;
-  lastUpdated: string;
-  sources: string[];
-  relatedConcepts: string[];
-  practicalExamples: string[];
-  tools: string[];
-  status: 'draft' | 'complete' | 'review' | 'archived';
-  importance: 'low' | 'medium' | 'high' | 'critical';
-  type: 'concept' | 'technique' | 'tool' | 'vulnerability' | 'protocol' | 'framework' | 'guide';
-}
-
-interface LearningPath {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
-  estimatedTime: string;
-  concepts: string[];
-  prerequisites: string[];
-  learningObjectives: string[];
-  status: 'active' | 'completed' | 'paused';
-  progress: number;
-  currentConceptIndex: number;
-  createdAt: string;
-  lastAccessed: string;
-}
-
-interface UserProfile {
-  id: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
-  interests: string[];
-  completedConcepts: string[];
-  currentPath?: string;
-  learningStyle: 'visual' | 'practical' | 'theoretical' | 'mixed';
-  timeAvailable: 'low' | 'medium' | 'high';
-  goals: string[];
-  longTermGoals: string[];
-  targetSpecializations: string[];
-  targetCertifications: string[];
-  careerAspirations: string[];
-  platform: 'mac-m1' | 'mac-intel' | 'windows' | 'linux';
-  tools: string[];
-  createdAt: string;
-  updatedAt: string;
-}
-
 export default function CybersecurityLibrary() {
   const pageRef = useRef<HTMLDivElement>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -144,7 +80,7 @@ export default function CybersecurityLibrary() {
   const [selectedType, setSelectedType] = useState('all');
   const [newConceptType, setNewConceptType] = useState<'concept' | 'guide'>('concept');
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedEntry, setSelectedEntry] = useState<CybersecurityKnowledge | null>(null);
+  // const [selectedEntry, setSelectedEntry] = useState<CybersecurityKnowledge | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [entryToDelete, setEntryToDelete] = useState<CybersecurityKnowledge | null>(null);
@@ -235,7 +171,7 @@ export default function CybersecurityLibrary() {
   });
   
   // Learning Paths State
-  const [learningPaths, setLearningPaths] = useState<LearningPath[]>([]);
+  // const [learningPaths, setLearningPaths] = useState<LearningPath[]>([]);
   
   // Knowledge Base State
   const [knowledgeBase, setKnowledgeBase] = useState<CybersecurityKnowledge[]>([]);
@@ -372,23 +308,23 @@ export default function CybersecurityLibrary() {
   };
 
   // Función para crear nuevo concepto
-  const handleCreateConcept = async (conceptData: any) => {
-    const newConcept = await addConcept(conceptData);
-    if (newConcept) {
-      setKnowledgeBase(prev => [newConcept, ...prev]);
-      setShowAddModal(false);
-    } else {
-      console.error('Failed to create concept');
-    }
-  };
+  // const handleCreateConcept = async (conceptData: any) => {
+  //   const newConcept = await addConcept(conceptData);
+  //   if (newConcept) {
+  //     setKnowledgeBase(prev => [newConcept, ...prev]);
+  //     setShowAddModal(false);
+  //   } else {
+  //     console.error('Failed to create concept');
+  //   }
+  // };
 
   // Función para actualizar perfil de usuario
-  const handleUpdateUserProfile = async (updates: Partial<UserProfile>) => {
-    const updatedProfile = await updateUserProfile(updates);
-    if (updatedProfile) {
-      setUserProfile(updatedProfile);
-    }
-  };
+  // const handleUpdateUserProfile = async (updates: Partial<UserProfile>) => {
+  //   const updatedProfile = await updateUserProfile(updates);
+  //   if (updatedProfile) {
+  //     setUserProfile(updatedProfile);
+  //   }
+  // };
 
 
 
@@ -473,26 +409,26 @@ export default function CybersecurityLibrary() {
     }
   };
 
-  const explainConceptWithAI = async (conceptTitle: string) => {
-    try {
-      setIsLoading(true);
-      
-      // Obtener explicación con IA
-      const explanation = await explainConcept(conceptTitle, userProfile.level);
-      
-      // Mostrar explicación en un modal
-      console.log('Explicación generada:', explanation);
-      
-      // Aquí podrías mostrar la explicación en un modal más elaborado
-      alert(`Explicación de ${conceptTitle}:\n\n${explanation}`);
-      
-    } catch (error) {
-      console.error('Error explicando concepto:', error);
-      alert('Error al generar explicación. Por favor, intenta de nuevo.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const explainConceptWithAI = async (conceptTitle: string) => {
+  //   try {
+  //     setIsLoading(true);
+  //     
+  //     // Obtener explicación con IA
+  //     const explanation = await explainConcept(conceptTitle, userProfile.level);
+  //     
+  //     // Mostrar explicación en un modal
+  //     console.log('Explicación generada:', explanation);
+  //     
+  //     // Aquí podrías mostrar la explicación en un modal más elaborado
+  //     alert(`Explicación de ${conceptTitle}:\n\n${explanation}`);
+  //     
+  //   } catch (error) {
+  //     console.error('Error explicando concepto:', error);
+  //     alert('Error al generar explicación. Por favor, intenta de nuevo.');
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   const categories = [
     { id: 'all', name: 'Todas', icon: <Library className="h-4 w-4" />, color: 'bg-gray-100 text-gray-700' },
