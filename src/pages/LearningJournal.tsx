@@ -91,20 +91,20 @@ export default function CybersecurityLibrary() {
     level: 'Beginner',
     interests: [],
     completed_concepts: [],
-    learningStyle: 'mixed',
-    timeAvailable: 'high',
+    learning_style: 'mixed',
+    time_available: 'high',
     goals: [
       'Dominar fundamentos sólidos de ciberseguridad',
       'Desarrollar habilidades prácticas avanzadas',
       'Construir una base de conocimiento completa'
     ],
-    longTermGoals: [
+    long_term_goals: [
       'Convertirse en experto en ciberseguridad',
       'Dominar todas las ramas: Red Team, Blue Team, Forense Digital',
       'Ser reconocido como uno de los mejores en el campo',
       'Contribuir al avance de la ciberseguridad'
     ],
-    targetSpecializations: [
+    target_specializations: [
       'Red Team (Penetration Testing)',
       'Blue Team (Defensa y Respuesta a Incidentes)',
       'Forense Digital (Digital Forensics)',
@@ -114,7 +114,7 @@ export default function CybersecurityLibrary() {
       'Threat Intelligence',
       'Seguridad en la Nube'
     ],
-    targetCertifications: [
+    target_certifications: [
       'OSCP (Offensive Security Certified Professional)',
       'CEH (Certified Ethical Hacker)',
       'CISSP (Certified Information Systems Security Professional)',
@@ -124,7 +124,7 @@ export default function CybersecurityLibrary() {
       'AWS Security Specialty',
       'Azure Security Engineer'
     ],
-    careerAspirations: [
+    career_aspirations: [
       'Líder de equipo de ciberseguridad',
       'Consultor senior en ciberseguridad',
       'Investigador de amenazas',
@@ -148,8 +148,8 @@ export default function CybersecurityLibrary() {
       'lsof',
       'netstat'
     ],
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   });
   
   // Learning Paths State
@@ -169,10 +169,10 @@ export default function CybersecurityLibrary() {
       subcategory: 'injection',
       tags: ['SQL Injection', 'OWASP', 'Database Security', 'Web Security'],
       difficulty: 'Intermediate',
-      dateAdded: '2024-01-15T10:00:00Z',
-      lastUpdated: '2024-01-15T10:00:00Z',
+      date_added: '2024-01-15T10:00:00Z',
+      last_updated: '2024-01-15T10:00:00Z',
       sources: ['OWASP Top 10', 'PortSwigger Web Security Academy'],
-      relatedConcepts: ['XSS', 'CSRF', 'Input Validation'],
+      related_concepts: ['XSS', 'CSRF', 'Input Validation'],
       practicalExamples: ['DVWA SQL Injection Lab', 'Burp Suite Practice'],
       tools: ['Burp Suite', 'SQLMap', 'OWASP ZAP'],
       status: 'complete',
@@ -188,10 +188,10 @@ export default function CybersecurityLibrary() {
       subcategory: 'reconnaissance',
       tags: ['Nmap', 'Port Scanning', 'Network Security', 'Reconnaissance'],
       difficulty: 'Beginner',
-      dateAdded: '2024-01-16T10:00:00Z',
-      lastUpdated: '2024-01-16T10:00:00Z',
+      date_added: '2024-01-16T10:00:00Z',
+      last_updated: '2024-01-16T10:00:00Z',
       sources: ['Nmap Official Documentation', 'HackTheBox Academy'],
-      relatedConcepts: ['Network Reconnaissance', 'Port Scanning', 'Network Security'],
+      related_concepts: ['Network Reconnaissance', 'Port Scanning', 'Network Security'],
       practicalExamples: ['Escaneo de red local', 'Auditoría de servidores'],
       tools: ['Nmap', 'Zenmap', 'NSE Scripts'],
       status: 'complete',
@@ -207,10 +207,10 @@ export default function CybersecurityLibrary() {
       subcategory: 'monitoring',
       tags: ['Linux', 'Process Analysis', 'System Monitoring', 'Terminal'],
       difficulty: 'Beginner',
-      dateAdded: '2024-01-17T10:00:00Z',
-      lastUpdated: '2024-01-17T10:00:00Z',
+      date_added: '2024-01-17T10:00:00Z',
+              last_updated: '2024-01-17T10:00:00Z',
       sources: ['Linux Documentation', 'Red Hat System Administration'],
-      relatedConcepts: ['System Monitoring', 'Process Management', 'Linux Security'],
+              related_concepts: ['System Monitoring', 'Process Management', 'Linux Security'],
       practicalExamples: ['Detectar malware', 'Optimizar rendimiento'],
       tools: ['ps', 'htop', 'top', 'lsof', 'netstat'],
       status: 'complete',
@@ -321,7 +321,7 @@ export default function CybersecurityLibrary() {
       
       // Obtener conceptos completados
       const completedConcepts = knowledgeBase.filter(concept => 
-        userProfile.completedConcepts.includes(concept.id)
+        userProfile.completed_concepts.includes(concept.id)
       );
       
       // Si no hay conceptos, crear sugerencia básica
@@ -563,7 +563,7 @@ export default function CybersecurityLibrary() {
     
     try {
       // Guardar en Supabase
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('tasks')
         .insert([{
           title: newTask.title,
@@ -572,8 +572,7 @@ export default function CybersecurityLibrary() {
           progress: newTask.progress,
           completed: newTask.completed,
           user_id: 'default-user' // Por ahora usar ID fijo
-        }])
-        .select();
+        }]);
 
       if (error) throw error;
 
@@ -688,7 +687,7 @@ export default function CybersecurityLibrary() {
       
       // Obtener conceptos completados
       const completedConcepts = knowledgeBase.filter(concept => 
-        userProfile.completedConcepts.includes(concept.id)
+        userProfile.completed_concepts.includes(concept.id)
       );
       
       // Crear contexto del task completado con objetivos ambiciosos
@@ -697,9 +696,9 @@ export default function CybersecurityLibrary() {
       
       OBJETIVOS AMBICIOSOS DEL USUARIO:
       - Quiere convertirse en EXPERTO en TODAS las ramas de ciberseguridad
-      - Especializaciones objetivo: ${userProfile.targetSpecializations.join(', ')}
-      - Certificaciones objetivo: ${userProfile.targetCertifications.join(', ')}
-      - Metas a largo plazo: ${userProfile.longTermGoals.join(', ')}
+      - Especializaciones objetivo: ${userProfile.target_specializations.join(', ')}
+      - Certificaciones objetivo: ${userProfile.target_certifications.join(', ')}
+      - Metas a largo plazo: ${userProfile.long_term_goals.join(', ')}
       
       Basándote en esto y sus metas ambiciosas, sugiere el siguiente paso de aprendizaje que sea más avanzado, complementario, o que abra nuevas especializaciones. Considera que el usuario quiere dominar Red Team, Blue Team, Forense Digital, y todas las ramas de ciberseguridad.`;
       
@@ -913,7 +912,7 @@ export default function CybersecurityLibrary() {
                         </div>
                         
                         <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-                          <span>{new Date(entry.dateAdded).toLocaleDateString()}</span>
+                          <span>{new Date(entry.date_added).toLocaleDateString()}</span>
                           <div className="flex items-center gap-2">
                             <Eye className="h-3 w-3" />
                             <span>Ver detalles</span>
@@ -985,11 +984,11 @@ export default function CybersecurityLibrary() {
                     )}
 
                     {/* Related Concepts */}
-                    {entry.relatedConcepts.length > 0 && (
+                    {entry.related_concepts.length > 0 && (
                       <div>
                         <h4 className="text-gray-900 dark:text-white font-semibold mb-2">Conceptos Relacionados:</h4>
                         <div className="flex flex-wrap gap-2">
-                          {entry.relatedConcepts.map((concept, index) => (
+                          {entry.related_concepts.map((concept: string, index: number) => (
                             <Badge key={index} className="bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
                               {concept}
                             </Badge>
@@ -1101,7 +1100,7 @@ export default function CybersecurityLibrary() {
                     <p className="text-lg font-bold text-gray-900 dark:text-white">
                       {isLoading ? '...' : 
                         knowledgeBase.length > 0 ? 
-                          new Date(Math.max(...knowledgeBase.map(e => new Date(e.lastUpdated).getTime()))).toLocaleDateString() : 
+                          new Date(Math.max(...knowledgeBase.map(e => new Date(e.last_updated).getTime()))).toLocaleDateString() : 
                           'N/A'
                       }
                     </p>
