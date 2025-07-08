@@ -44,7 +44,6 @@ import { gsap } from 'gsap';
 import { 
   getConcepts, 
   deleteConcept,
-  getLearningPaths,
   migrateExistingData
 } from '../lib/database';
 import { supabase } from '../lib/supabase';

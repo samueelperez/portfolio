@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { 
   Search, 
   Plus, 
@@ -13,7 +14,13 @@ import {
   Bug,
   Shield,
   Zap,
-  Target
+  Target,
+  CheckCircle,
+  Tag,
+  FileText,
+  Link,
+  BookOpen,
+  Clock
 } from 'lucide-react';
 import { gsap } from 'gsap';
 
@@ -250,7 +257,7 @@ export function KnowledgeBase({ entries, onAddEntry }: KnowledgeBaseProps) {
               <label className="text-sm font-medium">Resumen</label>
               <Textarea
                 value={newEntry.summary}
-                onChange={(e) => setNewEntry({...newEntry, summary: e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setNewEntry({...newEntry, summary: e.target.value})}
                 placeholder="Breve resumen del tema..."
                 rows={2}
               />
@@ -260,7 +267,7 @@ export function KnowledgeBase({ entries, onAddEntry }: KnowledgeBaseProps) {
               <label className="text-sm font-medium">Contenido Detallado</label>
               <Textarea
                 value={newEntry.content}
-                onChange={(e) => setNewEntry({...newEntry, content: e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setNewEntry({...newEntry, content: e.target.value})}
                 placeholder="Documenta todo lo que sabes sobre este tema..."
                 rows={6}
               />
